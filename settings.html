@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Ayarlar | YearJC</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="top-bar">
+  <span class="back-btn" onclick="goBack()">←</span>
+  <h2>Ayarlar</h2>
+</div>
+
+<div class="settings-container">
+
+  <!-- Ana Ayarlar -->
+  <div class="settings-item" onclick="toggleMenu('profileMenu')">
+    Profilim
+    <span class="arrow">▼</span>
+  </div>
+
+  <div id="profileMenu" class="submenu">
+    <button onclick="goProfile()">Profil Bilgileri</button>
+    <button onclick="changeUsername()">Kullanıcı Adı Değiştir</button>
+    <button onclick="changeEmail()">E-posta Değiştir</button>
+  </div>
+
+  <div class="settings-item" onclick="toggleMenu('securityMenu')">
+    Güvenlik
+    <span class="arrow">▼</span>
+  </div>
+
+  <div id="securityMenu" class="submenu">
+    <button onclick="resetPassword()">Şifre Sıfırla</button>
+    <button onclick="verifyEmail()">E-posta Doğrula</button>
+  </div>
+
+  <div class="settings-item" onclick="toggleMenu('accountMenu')">
+    Hesap
+    <span class="arrow">▼</span>
+  </div>
+
+  <div id="accountMenu" class="submenu">
+    <button onclick="logout()">Çıkış Yap</button>
+    <button onclick="goLogin()">Giriş Yap / Kayıt Ol</button>
+  </div>
+
+</div>
+
+<script src="settings.js"></script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>YearJC | Home</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="hamburger-btn" onclick="toggleSidebar()">☰</div>
+  <div class="top-title">YearJC</div>
+</div>
+
+<!-- SIDEBAR -->
+<div id="sidebar" class="sidebar">
+
+  <div class="sidebar-section">
+    <button class="sidebar-btn" onclick="newChat()">➕ Yeni Sohbet</button>
+  </div>
+
+  <div class="sidebar-section">
+    <h4>Sohbetler</h4>
+    <div id="chatList"></div>
+  </div>
+
+  <div class="sidebar-section bottom">
+    <button class="sidebar-btn" onclick="goProfile()">👤 Profil</button>
+    <button class="sidebar-btn" onclick="goSettings()">⚙️ Ayarlar</button>
+  </div>
+
+</div>
+
+<div id="overlay" class="overlay" onclick="toggleSidebar()"></div>
+
+<!-- CHAT -->
+<div class="chat-area">
+  <div id="messages" class="messages"></div>
+
+  <div class="input-area">
+    <input id="userInput" placeholder="YearJC'e bir şey sor..." />
+    <button id="sendBtn">Gönder</button>
+  </div>
+</div>
+
+<script type="module" src="home.js"></script>
+</body>
+</html>

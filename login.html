@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>YearJC | Giriş</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="container">
+  <h2>Giriş Yap</h2>
+
+  <input id="email" type="email" placeholder="E-posta">
+  <input id="password" type="password" placeholder="Şifre">
+
+  <p id="errorMsg" class="error"></p>
+
+  <button class="btn" onclick="login()">Giriş Yap</button>
+
+  <p class="forgot">
+    <a href="reset.html">Şifremi Unuttum</a>
+  </p>
+
+  <hr>
+
+  <button class="btn google" onclick="googleLogin()">
+    Google ile Giriş
+  </button>
+
+  <p class="register">
+    Hesabın yok mu? <a href="register.html">Kayıt Ol</a>
+  </p>
+</div>
+
+<script type="module" src="js/login.js"></script>
+</body>
+</html>
+

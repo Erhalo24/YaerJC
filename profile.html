@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>YearJC | Profil</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="topbar">
+  <span class="logo">Profil</span>
+  <button class="btn small" onclick="goHome()">← Geri</button>
+</div>
+
+<div class="profile-container">
+
+  <!-- SOL MENÜ -->
+  <div class="profile-menu">
+    <div onclick="showSection('info')">Bilgiler</div>
+    <div onclick="showSection('verify')">E-posta Doğrulama</div>
+    <div onclick="showSection('password')">Şifre Değiştir</div>
+    <div onclick="showSection('username')">Kullanıcı Adı Değiştir</div>
+  </div>
+
+  <!-- SAĞ İÇERİK -->
+  <div class="profile-content">
+
+    <!-- BİLGİLER -->
+    <div id="info" class="section">
+      <h3>Bilgiler</h3>
+      <p><b>E-posta:</b> <span id="email"></span></p>
+      <p><b>Telefon:</b> <span id="phone"></span></p>
+      <p><b>Kullanıcı Adı:</b> <span id="usernameText"></span></p>
+    </div>
+
+    <!-- EPOSTA DOĞRULAMA -->
+    <div id="verify" class="section hidden">
+      <h3>E-posta Doğrulama</h3>
+      <p id="verifyStatus"></p>
+      <button class="btn" onclick="sendVerify()">Doğrulama Maili Gönder</button>
+    </div>
+
+    <!-- ŞİFRE -->
+    <div id="password" class="section hidden">
+      <h3>Şifre Değiştir</h3>
+      <button class="btn" onclick="resetPassword()">Şifre Sıfırlama Maili Gönder</button>
+    </div>
+
+    <!-- KULLANICI ADI -->
+    <div id="username" class="section hidden">
+      <h3>Kullanıcı Adı Değiştir</h3>
+      <input id="newUsername" placeholder="Yeni kullanıcı adı">
+      <p id="userError" class="error"></p>
+      <button class="btn" onclick="changeUsername()">Kaydet</button>
+    </div>
+
+  </div>
+</div>
+
+<script type="module" src="js/profile.js"></script>
+</body>
+</html>

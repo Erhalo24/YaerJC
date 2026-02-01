@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>YearJC | Şifre Sıfırlama</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="container">
+  <h2>Şifre Sıfırlama</h2>
+
+  <p class="info">
+    Kayıtlı e-posta adresini gir, sana şifre sıfırlama bağlantısı gönderelim.
+  </p>
+
+  <input id="email" type="email" placeholder="E-posta adresin">
+
+  <p id="msg" class="error"></p>
+
+  <button class="btn" onclick="resetPassword()">
+    Şifre Sıfırlama Maili Gönder
+  </button>
+
+  <p class="back">
+    <a href="login.html">← Giriş sayfasına dön</a>
+  </p>
+</div>
+
+<script type="module" src="js/reset.js"></script>
+</body>
+</html>
