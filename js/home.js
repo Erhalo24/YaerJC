@@ -99,7 +99,6 @@ async function sendMessage() {
   // Öğretme modu
   if (waitingForAnswer) {
     await learnAnswer(text);
-
     chat.messages.push({ from: "ai", text: "Tamam 👍 Bunu öğrendim." });
     renderMessages();
     return;
@@ -132,8 +131,23 @@ function renderMessages() {
 }
 
 /* =======================
-   YEARJC AI
+   YEARJC AI + ÖRNEK SORULAR
 ======================= */
+async function setupSampleData() {
+  const sampleData = {
+    "merhaba": { answers: ["Merhaba! Nasılsın?", "Selam!"] },
+    "nasılsın": { answers: ["İyiyim, teşekkür ederim!", "Harikayım, sen nasılsın?"] },
+    "yearjc nedir": { answers: ["Ben YearJC, senin yapay zekâ asistanınım."] }
+  };
+
+  for (const key in sampleData) {
+    const snap = await get(ref(db, "knowledge/" + key));
+    if (!snap.exists()) {
+      await set(ref(db, "knowledge/" + key), sampleData[key]);
+    }
+  }
+}
+
 async function getAIAnswer(question) {
   const q = question.toLowerCase().trim();
   const snap = await get(ref(db, "knowledge/" + q));
@@ -150,10 +164,8 @@ async function getAIAnswer(question) {
 
 async function learnAnswer(answerText) {
   if (!waitingForAnswer) return;
-
   const answers = answerText.split(",").map(a => a.trim());
   await set(ref(db, "knowledge/" + lastQuestion), { answers });
-
   waitingForAnswer = false;
   lastQuestion = "";
 }
@@ -161,7 +173,7 @@ async function learnAnswer(answerText) {
 /* =======================
    EVENTLER
 ======================= */
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   const input = document.getElementById("userInput");
   const sendBtn = document.getElementById("sendBtn");
 
@@ -169,6 +181,9 @@ document.addEventListener("DOMContentLoaded", () => {
   if (input) input.addEventListener("keydown", e => {
     if (e.key === "Enter") sendMessage();
   });
+
+  // Başlangıçta örnek soruları ekle
+  await setupSampleData();
 
   // Sayfa açılınca ilk sohbet oluştur
   newChat();
