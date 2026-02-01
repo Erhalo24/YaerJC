@@ -1,14 +1,9 @@
 /* =======================
    FIREBASE IMPORT + INIT
 ======================= */
-import { initializeApp } from
-"https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-
-import { getDatabase, ref, get, set } from
-"https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
-
-import { getAuth } from
-"https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getDatabase, ref, get, set } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+import { getAuth } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAEiFzZQVh7wen6Nj1A9E2LVEw8AigYP98",
@@ -28,7 +23,6 @@ const auth = getAuth(app);
 ======================= */
 let chats = [];
 let currentChatId = null;
-
 let waitingForAnswer = false;
 let lastQuestion = "";
 
@@ -38,8 +32,8 @@ let lastQuestion = "";
 function toggleSidebar() {
   const sidebar = document.getElementById("sidebar");
   const overlay = document.getElementById("overlay");
-  sidebar.classList.toggle("open");
-  overlay.classList.toggle("show");
+  sidebar?.classList.toggle("open");
+  overlay?.classList.toggle("show");
 }
 
 /* =======================
@@ -60,12 +54,7 @@ function newChat() {
   const id = Date.now();
   const name = "Sohbet " + (chats.length + 1);
 
-  chats.push({
-    id,
-    name,
-    messages: []
-  });
-
+  chats.push({ id, name, messages: [] });
   currentChatId = id;
   renderChatList();
   renderMessages();
@@ -74,7 +63,6 @@ function newChat() {
 function renderChatList() {
   const list = document.getElementById("chatList");
   if (!list) return;
-
   list.innerHTML = "";
 
   chats.forEach(chat => {
@@ -92,7 +80,7 @@ function openChat(id) {
 }
 
 /* =======================
-   MESAJ GÖNDERME (ÖNEMLİ)
+   MESAJ GÖNDERME
 ======================= */
 async function sendMessage() {
   const input = document.getElementById("userInput");
@@ -105,30 +93,21 @@ async function sendMessage() {
 
   // Kullanıcı mesajı
   chat.messages.push({ from: "user", text });
-  input.value = "";
   renderMessages();
+  input.value = "";
 
   // Öğretme modu
   if (waitingForAnswer) {
     await learnAnswer(text);
 
-    chat.messages.push({
-      from: "ai",
-      text: "Tamam 👍 Bunu öğrendim."
-    });
-
+    chat.messages.push({ from: "ai", text: "Tamam 👍 Bunu öğrendim." });
     renderMessages();
     return;
   }
 
   // AI cevabı
   const aiReply = await getAIAnswer(text);
-
-  chat.messages.push({
-    from: "ai",
-    text: aiReply
-  });
-
+  chat.messages.push({ from: "ai", text: aiReply });
   renderMessages();
 }
 
@@ -140,8 +119,8 @@ function renderMessages() {
   if (!box || !currentChatId) return;
 
   box.innerHTML = "";
-
   const chat = chats.find(c => c.id === currentChatId);
+
   chat.messages.forEach(m => {
     const div = document.createElement("div");
     div.className = m.from === "user" ? "msg user" : "msg ai";
@@ -173,10 +152,7 @@ async function learnAnswer(answerText) {
   if (!waitingForAnswer) return;
 
   const answers = answerText.split(",").map(a => a.trim());
-
-  await set(ref(db, "knowledge/" + lastQuestion), {
-    answers
-  });
+  await set(ref(db, "knowledge/" + lastQuestion), { answers });
 
   waitingForAnswer = false;
   lastQuestion = "";
@@ -189,17 +165,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const input = document.getElementById("userInput");
   const sendBtn = document.getElementById("sendBtn");
 
-  if (sendBtn) {
-    sendBtn.addEventListener("click", sendMessage);
-  }
+  if (sendBtn) sendBtn.addEventListener("click", sendMessage);
+  if (input) input.addEventListener("keydown", e => {
+    if (e.key === "Enter") sendMessage();
+  });
 
-  if (input) {
-    input.addEventListener("keydown", e => {
-      if (e.key === "Enter") sendMessage();
-    });
-  }
-
-  // Sayfa açılınca otomatik sohbet
+  // Sayfa açılınca ilk sohbet oluştur
   newChat();
 });
 
+/* =======================
+   GLOBAL FONKSİYONLAR
+======================= */
+window.toggleSidebar = toggleSidebar;
+window.newChat = newChat;
+window.goProfile = goProfile;
+window.goSettings = goSettings;
+window.sendMessage = sendMessage;
