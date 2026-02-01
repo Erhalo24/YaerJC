@@ -8,5 +8,6 @@ document.getElementById("registerBtn").onclick = () => {
 
 document.getElementById("guestBtn").onclick = () => {
   localStorage.setItem("guest", "true");
-  window.location.href = "guesthome.html.html";
+  window.location.href = "guesthome.html";
 };
+
