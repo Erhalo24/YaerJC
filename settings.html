@@ -2,54 +2,52 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width initial-scale=1.0">
   <title>Ayarlar | YearJC</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
 <div class="top-bar">
-  <span class="back-btn" onclick="goBack()">←</span>
+  <span class="back-btn" id="btnBack">←</span>
   <h2>Ayarlar</h2>
 </div>
 
 <div class="settings-container">
 
-  <!-- Ana Ayarlar -->
-  <div class="settings-item" onclick="toggleMenu('profileMenu')">
+  <div class="settings-item" data-menu="profileMenu">
     Profilim
     <span class="arrow">▼</span>
   </div>
 
   <div id="profileMenu" class="submenu">
-    <button onclick="goProfile()">Profil Bilgileri</button>
-    <button onclick="changeUsername()">Kullanıcı Adı Değiştir</button>
-    <button onclick="changeEmail()">E-posta Değiştir</button>
+    <button id="btnProfile">Profil Bilgileri</button>
+    <button id="btnUsername">Kullanıcı Adı Değiştir</button>
+    <button id="btnEmail">E posta Değiştir</button>
   </div>
 
-  <div class="settings-item" onclick="toggleMenu('securityMenu')">
+  <div class="settings-item" data-menu="securityMenu">
     Güvenlik
     <span class="arrow">▼</span>
   </div>
 
   <div id="securityMenu" class="submenu">
-    <button onclick="resetPassword()">Şifre Sıfırla</button>
-    <button onclick="verifyEmail()">E-posta Doğrula</button>
+    <button id="btnResetPassword">Şifre Sıfırla</button>
+    <button id="btnVerifyEmail">E posta Doğrula</button>
   </div>
 
-  <div class="settings-item" onclick="toggleMenu('accountMenu')">
+  <div class="settings-item" data-menu="accountMenu">
     Hesap
     <span class="arrow">▼</span>
   </div>
 
   <div id="accountMenu" class="submenu">
-    <button onclick="logout()">Çıkış Yap</button>
-    <button onclick="goLogin()">Giriş Yap / Kayıt Ol</button>
+    <button id="btnLogout">Çıkış Yap</button>
+    <button id="btnLogin">Giriş Yap Kayıt Ol</button>
   </div>
 
 </div>
 
-<script src="js/settings.js"></script>
+<script type="module" src="js/settings.js"></script>
 </body>
 </html>
-
-
