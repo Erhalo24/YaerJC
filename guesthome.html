@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
-<title>YearJC | Misafir</title>
-<link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <title>YearJC | Misafir</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
 <div class="topbar">
-  <span class="logo">YearJC (Misafir)</span>
+    <span class="logo top-title">YearJC (Misafir)</span>
 </div>
 
-<div class="chat">
-  <div id="messages"></div>
+<div class="chat-area">
+    <div id="messages" class="messages"></div>
 
-  <input id="question" placeholder="Bir şey sor...">
-  <button onclick="ask()">Gönder</button>
+    <div class="input-area">
+        <input id="question" placeholder="Bir şey sor...">
+        <button onclick="ask()">Gönder</button>
+    </div>
 
-  <p id="limit" class="error"></p>
+    <p id="limit" class="error"></p>
 </div>
 
 <script type="module" src="js/guesthome.js"></script>
