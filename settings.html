@@ -2,48 +2,48 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ayarlar | YearJC</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<div class="top-bar">
-  <span class="back-btn" id="btnBack">←</span>
-  <h2>Ayarlar</h2>
+<div class="topbar">
+  <span class="back-btn" id="btnBack" style="cursor:pointer; font-size: 24px; margin-right: 15px;">←</span>
+  <h2 class="top-title">Ayarlar</h2>
 </div>
 
-<div class="settings-container">
+<div class="chat-area" style="margin-top: 20px;"> 
 
-  <div class="settings-item" data-menu="profileMenu">
-    Profilim
-    <span class="arrow">▼</span>
+  <div class="settings-item">
+    <div class="settings-header" data-menu="profileMenu">
+      Profilim <span>▼</span>
+    </div>
+    <div id="profileMenu" class="settings-body">
+      <button class="sidebar-btn" id="btnProfile">Profil Bilgileri</button>
+      <button class="sidebar-btn" id="btnUsername">Kullanıcı Adı Değiştir</button>
+      <button class="sidebar-btn" id="btnEmail">E-posta Değiştir</button>
+    </div>
   </div>
 
-  <div id="profileMenu" class="submenu">
-    <button id="btnProfile">Profil Bilgileri</button>
-    <button id="btnUsername">Kullanıcı Adı Değiştir</button>
-    <button id="btnEmail">E posta Değiştir</button>
+  <div class="settings-item">
+    <div class="settings-header" data-menu="securityMenu">
+      Güvenlik <span>▼</span>
+    </div>
+    <div id="securityMenu" class="settings-body">
+      <button class="sidebar-btn" id="btnResetPassword">Şifre Sıfırla</button>
+      <button class="sidebar-btn" id="btnVerifyEmail">E-posta Doğrula</button>
+    </div>
   </div>
 
-  <div class="settings-item" data-menu="securityMenu">
-    Güvenlik
-    <span class="arrow">▼</span>
-  </div>
-
-  <div id="securityMenu" class="submenu">
-    <button id="btnResetPassword">Şifre Sıfırla</button>
-    <button id="btnVerifyEmail">E posta Doğrula</button>
-  </div>
-
-  <div class="settings-item" data-menu="accountMenu">
-    Hesap
-    <span class="arrow">▼</span>
-  </div>
-
-  <div id="accountMenu" class="submenu">
-    <button id="btnLogout">Çıkış Yap</button>
-    <button id="btnLogin">Giriş Yap Kayıt Ol</button>
+  <div class="settings-item">
+    <div class="settings-header" data-menu="accountMenu">
+      Hesap <span>▼</span>
+    </div>
+    <div id="accountMenu" class="settings-body">
+      <button class="sidebar-btn" id="btnLogout" style="color: var(--danger);">Çıkış Yap</button>
+      <button class="sidebar-btn" id="btnLogin">Giriş Yap / Kayıt Ol</button>
+    </div>
   </div>
 
 </div>
